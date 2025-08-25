@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 
 export default function Login() {
@@ -6,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,12 +18,14 @@ export default function Login() {
       const res = await API.post("/auth/login", { email, password });
       console.log("Login exitoso:", res.data);
 
-      // Guardar token en localStorage (para futuras peticiones)
-      localStorage.setItem("token", res.data.token);
-
       alert("¡Bienvenido!");
-      // Aquí puedes redirigir al Home, Productos, etc.
-      // window.location.href = "/home";
+
+      // 👇 Redirigir según el rol que devuelva el backend
+      if (res.data.user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else {
+        navigate("/home");
+      }
     } catch (err) {
       setError(err.response?.data?.msg || "Error en el login");
     } finally {
