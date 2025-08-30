@@ -1,0 +1,98 @@
+/* Contenedor principal del dashboard */
+.dashboard {
+  padding: 32px;
+  background-color: #e6eef7; /* gris claro */
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Contenedor centrado */
+.dashboard-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Título principal */
+.dashboard h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937; /* gris oscuro */
+  margin-bottom: 32px;
+}
+
+/* Grid de KPI horizontal en escritorio */
+.kpi-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Tarjetas KPI */
+.kpi-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.kpi-card:hover {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
+}
+
+/* Título dentro de la tarjeta */
+.kpi-card h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280; /* gris medio */
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Valor dentro de la tarjeta */
+.kpi-card p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827; /* gris oscuro */
+  text-align: center;
+}
+
+/* Grid de gráficas */
+.dashboard-graphs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* Tarjetas de gráficas */
+.graph-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 24px;
+}
+
+.graph-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 16px;
+}
+
+/* Placeholder para gráficas (si se necesita) */
+.graph-placeholder {
+  height: 16rem;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 1rem;
+}

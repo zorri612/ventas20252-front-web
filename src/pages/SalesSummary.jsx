@@ -1,3 +1,4 @@
+// SalesSummary.jsx
 import { useEffect, useState } from "react";
 
 export default function SalesSummary() {
@@ -19,17 +20,13 @@ export default function SalesSummary() {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div className="kpi-cards">
       {cards.map((card, i) => (
-        <div
-          key={i}
-          className="bg-white p-6 rounded-2xl shadow flex flex-col justify-center items-center hover:shadow-lg transition"
-        >
-          <h3 className="text-sm font-medium text-gray-500">{card.title}</h3>
-          <p className="mt-2 text-2xl font-bold text-gray-800">{card.value}</p>
+        <div key={i} className="kpi-card">
+          <h3>{card.title}</h3>
+          <p>{card.value}</p>
         </div>
       ))}
     </div>
   );
 }
-

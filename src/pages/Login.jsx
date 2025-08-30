@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../services/api";
+import "../styles/login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ export default function Login() {
 
       alert("¡Bienvenido!");
 
-      // 👇 Redirigir según el rol que devuelva el backend
+      // Redirigir según el rol que devuelva el backend
       if (res.data.user.role === "admin") {
         navigate("/admin/dashboard");
       } else {
@@ -34,56 +35,62 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg">
-        <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">
-          Iniciar Sesión
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Iniciar Sesión</h2>
+
+        <form onSubmit={handleSubmit}>
           <div>
-            <label className="block text-sm font-medium text-gray-600">
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
               Correo
             </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              placeholder="ejemplo@correo.com"
-              required
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-3 text-gray-400">
+                <i className="fa-solid fa-user"></i>
+              </span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-xl border border-gray-300 px-10 py-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                placeholder="ejemplo@correo.com"
+                required
+              />
+            </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-600">
+            <label className="block text-sm font-semibold text-gray-700 mb-1">
               Contraseña
             </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              placeholder="********"
-              required
-            />
+            <div className="relative">
+              <span className="absolute left-3 top-3 text-gray-400">
+                <i className="fa-solid fa-lock"></i>
+              </span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full rounded-xl border border-gray-300 px-10 py-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                placeholder="********"
+                required
+              />
+            </div>
           </div>
 
-          {error && <p className="text-sm text-red-600">{error}</p>}
+          {error && <p className="error">{error}</p>}
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white transition hover:bg-blue-700 disabled:opacity-50"
           >
             {loading ? "Ingresando..." : "Entrar"}
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="register-link">
           ¿No tienes cuenta?{" "}
-          <a href="/register" className="text-blue-600 hover:underline">
-            Regístrate
-          </a>
+          <a href="/register">Regístrate</a>
         </p>
       </div>
     </div>

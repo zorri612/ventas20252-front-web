@@ -1,16 +1,18 @@
+// Dashboard.jsx
+import "../styles/Dashboard.css";
 import SalesSummary from "./SalesSummary";
 import SalesLast30Days from "./SalesLast30Days";
 import SalesByProduct from "./SalesByProduct";
 
 export default function Dashboard() {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        {/* Tarjetas KPI */}
+    <div className="dashboard">
+      <div className="dashboard-container">
+        <h1>Dashboard</h1>
+
         <SalesSummary />
 
-        {/* Gráficas lado a lado */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="dashboard-graphs">
           <SalesLast30Days />
           <SalesByProduct />
         </div>
@@ -18,4 +20,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

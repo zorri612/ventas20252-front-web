@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../services/api";
+import "../styles/Register.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -26,7 +27,6 @@ export default function Register() {
       const res = await API.post("/auth/register", { email, password });
       setSuccess(res.data.msg || "Usuario registrado con éxito");
 
-      // opcional: redirigir directo al login
       setTimeout(() => {
         window.location.href = "/";
       }, 1500);
@@ -38,87 +38,58 @@ export default function Register() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-lg">
-        <h2 className="mb-6 text-center text-2xl font-bold text-gray-800">
-          Crear Cuenta
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Correo
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              placeholder="ejemplo@correo.com"
-              required
-            />
-          </div>
+    <div className="register-page">
+      <div className="register-card">
+        <h2>Crear Cuenta</h2>
+        <form onSubmit={handleSubmit}>
+          <label>Correo</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="ejemplo@correo.com"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              placeholder="********"
-              required
-            />
-          </div>
+          <label>Contraseña</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="********"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Confirmar Contraseña
-            </label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              placeholder="********"
-              required
-            />
-          </div>
+          <label>Confirmar Contraseña</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            placeholder="********"
+            required
+          />
 
-          <div>
-            <label className="block text-sm font-medium text-gray-600">
-              Rol
-            </label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="mt-1 w-full rounded-lg border px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
-              required
-            >
-              <option value="">Selecciona un rol</option>
-              <option value="admin">Administrador</option>
-              <option value="user">Usuario</option>
-            </select>
-          </div>
-
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {success && <p className="text-sm text-green-600">{success}</p>}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-lg bg-green-600 px-4 py-2 text-white transition hover:bg-green-700 disabled:opacity-50"
+          <label>Rol</label>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
           >
+            <option value="">Selecciona un rol</option>
+            <option value="admin">Administrador</option>
+            <option value="user">Usuario</option>
+          </select>
+
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
+
+          <button type="submit" disabled={loading}>
             {loading ? "Registrando..." : "Registrarse"}
           </button>
         </form>
 
-        <p className="mt-4 text-center text-sm text-gray-500">
-          ¿Ya tienes cuenta?{" "}
-          <a href="/" className="text-blue-600 hover:underline">
-            Inicia Sesión
-          </a>
+        <p>
+          ¿Ya tienes cuenta? <a href="/">Inicia Sesión</a>
         </p>
       </div>
     </div>
