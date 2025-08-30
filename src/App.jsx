@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Rutas principales de la app */}
-        <Route path="/*" element={<AppRouter />} />
+        <Route path="/" element={<AppRouter />} />
         <Route path="/register" element={<AppRouter />} />
 
         {/* Ruta específica del admin dashboard */}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../services/api";
 import "../styles/Register.css";
 
@@ -7,10 +8,12 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
-  
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,11 +27,11 @@ export default function Register() {
 
     try {
       setLoading(true);
-      const res = await API.post("/auth/register", { email, password });
+      const res = await API.post("/auth/register", { email, password, role });
       setSuccess(res.data.msg || "Usuario registrado con éxito");
 
       setTimeout(() => {
-        window.location.href = "/";
+        navigate("/"); // te manda al login después de registrarte
       }, 1500);
     } catch (err) {
       setError(err.response?.data?.msg || "Error en el registro");
