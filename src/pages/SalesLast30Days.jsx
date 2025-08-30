@@ -7,7 +7,7 @@ export default function SalesLast30Days() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/reports/sales/last30days")
+    fetch("https://ventas20252-back.vercel.app/api/reports/sales/last30days")
       .then(res => res.json())
       .then(data => setData(data));
   }, []);

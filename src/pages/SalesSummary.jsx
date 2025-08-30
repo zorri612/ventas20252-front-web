@@ -5,7 +5,7 @@ export default function SalesSummary() {
   const [summary, setSummary] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/reports/sales/summary")
+    fetch("https://ventas20252-back.vercel.app/api/reports/sales/summary")
       .then(res => res.json())
       .then(data => setSummary(data));
   }, []);

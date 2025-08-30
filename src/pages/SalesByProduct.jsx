@@ -5,7 +5,7 @@ export default function SalesByProduct() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/reports/sales/by-product")
+    fetch("https://ventas20252-back.vercel.app/api/reports/sales/by-product")
       .then(res => res.json())
       .then(data => setData(data));
   }, []);
