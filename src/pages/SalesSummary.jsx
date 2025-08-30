@@ -15,7 +15,7 @@ export default function SalesSummary() {
   const cards = [
     { title: "Ventas Totales", value: summary.totalSales },
     { title: "Ingresos Totales", value: `$${summary.totalRevenue}` },
-    { title: "Ventas últimos 30 días", value: summary.salesLast30Days },
+    { title: "Ventas últimos 2 días", value: summary.salesLast30Days },
     { title: "Ingresos últimos 30 días", value: `$${summary.revenueLast30Days}` },
   ];
 
