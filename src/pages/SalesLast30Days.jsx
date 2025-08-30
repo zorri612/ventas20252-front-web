@@ -14,7 +14,7 @@ export default function SalesLast30Days() {
 
   return (
     <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all duration-300">
-      <h2 className="text-lg font-semibold text-gray-700 mb-4">Ventas últimos 30 días</h2>
+      <h2 className="text-lg font-semibold text-gray-700 mb-4">Ventas últimos 2 días</h2>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
