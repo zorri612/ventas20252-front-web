@@ -9,7 +9,7 @@ function App() {
       <Routes>
         {/* Rutas principales de la app */}
         <Route path="/*" element={<AppRouter />} />
-        <Route path="/register/*" element={<AppRouter />} />
+        <Route path="/register" element={<AppRouter />} />
 
         {/* Ruta específica del admin dashboard */}
         <Route path="/admin/dashboard" element={<Dashboard />} />
